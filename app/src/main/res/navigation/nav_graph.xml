@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/consumptionFragment">
+
+    <fragment
+        android:id="@+id/consumptionFragment"
+        android:name="cz.muni.consumption.ui.consumption.ConsumptionFragment"
+        android:label="ConsumptionFragment"
+        tools:layout="@layout/fragment_consumption" />
+
+    <fragment
+        android:id="@+id/trendsFragment"
+        android:name="cz.muni.consumption.ui.trends.TrendsFragment"
+        android:label="TrendsFragment"
+        tools:layout="@layout/fragment_trends" />
+</navigation>

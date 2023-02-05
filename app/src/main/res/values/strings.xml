@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Consumption</string>
+
+    <string name="bottom_navigation_consumption">Consumption</string>
+    <string name="bottom_navigation_trends">Trends</string>
+
+    <string name="consumption_add">Add</string>
+    <string name="consumption_delete">Delete</string>
+
+    <string name="consumption_options_take_photo">Take photo</string>
+    <string name="consumption_options_manual">Manual</string>
+    <string name="consumption_options_from_gallery">From gallery</string>
+    <string name="consumption_options_generate_data">Generate data</string>
+
+    <string name="consumption_add_edit_edittext_hint_consumption">Current consumption</string>
+    <string name="consumption_add_edit_edittext_hint_date">Measurement date</string>
+    <string name="consumption_add_edit_type_of_consumption">Type of consumption</string>
+    <string name="consumption_add_edit_chip_gas">Gas</string>
+    <string name="consumption_add_edit_chip_electricity">Electricity</string>
+    <string name="consumption_add_edit_button_save">Save</string>
+    <string name="consumption_add_edit_field_is_not_valid">Field is not valid</string>
+
+</resources>

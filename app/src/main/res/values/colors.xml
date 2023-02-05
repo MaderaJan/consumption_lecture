@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary_variant_500">#C44000</color>
+    <color name="primary_variant_200">#FB5607</color>
+
+    <color name="purple_200">#FF0070</color>
+    <color name="purple_500">#FF318B</color>
+    <color name="purple_700">#E30063</color>
+    <color name="teal_200">#FB5607</color>
+    <color name="teal_700">#C44000</color>
+
+    <color name="black">#FF000000</color>
+    <color name="grey">#BBB</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="electricity">#0192F9</color>
+    <color name="gas">#ffbe0b</color>
+</resources>

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO 4. Permissions -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -19,7 +18,6 @@
         android:theme="@style/Theme.Consumption"
         tools:targetApi="31">
 
-        <!-- TODO 5. Registrace Activity v Manifest -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

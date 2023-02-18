@@ -5,15 +5,12 @@
     android:id="@+id/navigation"
     app:startDestination="@id/consumptionFragment">
 
+    <!--    // TODO 6. Navigation Graph -->
     <fragment
         android:id="@+id/consumptionFragment"
         android:name="cz.muni.consumption.ui.consumption.ConsumptionFragment"
         android:label="ConsumptionFragment"
         tools:layout="@layout/fragment_consumption" />
 
-    <fragment
-        android:id="@+id/trendsFragment"
-        android:name="cz.muni.consumption.ui.trends.TrendsFragment"
-        android:label="TrendsFragment"
-        tools:layout="@layout/fragment_trends" />
+    <!--    // TODO 7. (S) Add TrendsFragment -->
 </navigation>

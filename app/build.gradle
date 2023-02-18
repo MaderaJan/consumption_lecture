@@ -40,7 +40,6 @@ android {
     }
 }
 
-// TODO 7. GRADLE DEPENDECIES
 dependencies {
     // KT
     implementation "androidx.core:core-ktx:1.9.0"

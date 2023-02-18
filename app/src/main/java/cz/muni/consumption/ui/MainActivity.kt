@@ -7,13 +7,10 @@ import androidx.navigation.ui.setupWithNavController
 import cz.muni.consumption.R
 import cz.muni.consumption.databinding.ActivityMainBinding
 
-// TODO 1 Konstra UI
-// TODO 2 MainActivity -> layout, binding
-// TODO 6 Resources
-
 class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy {
+        // TODO 2. BindingView
         ActivityMainBinding.inflate(layoutInflater)
     }
 
@@ -21,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        // TODO 1. BottomNavigation + NavigationComponent
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)

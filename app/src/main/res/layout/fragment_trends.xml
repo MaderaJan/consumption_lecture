@@ -16,6 +16,13 @@
             android:text="📊"
             android:textSize="64dp" />
 
+        <Button
+            android:id="@+id/tlacitko"
+            android:layout_width="wrap_content"
+            android:onClick=""
+            android:text="Click me"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </ScrollView>

@@ -17,12 +17,11 @@
             android:textSize="64dp" />
 
         <Button
+            android:id="@+id/tlacitko"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:id="@+id/add_time_button"
-            android:text="@string/add_time"
-            />
+            android:onClick=""
+            android:text="Click me"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

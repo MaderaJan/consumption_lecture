@@ -23,6 +23,8 @@ class ConsumptionFragment : Fragment() {
         ConsumptionRepository()
     }
 
+
+    asd
     private val adapter: ConsumptionAdapter by lazy {
         ConsumptionAdapter(
             onItemClick = { consumption ->

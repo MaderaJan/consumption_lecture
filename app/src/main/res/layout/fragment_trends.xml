@@ -3,26 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/current_date_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="📊"
-            android:textSize="64dp" />
-
-        <Button
-            android:id="@+id/tlacitko"
-            android:layout_width="wrap_content"
-            android:onClick=""
-            android:text="Click me"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+    <!--    TODO Hint: LinearLayout (orientation: vertical) uvnitř ScrollView-->
+    <!--    TODO recylclerView id -> electricity_recycler-->
+    <!--    TODO recylclerView id -> gas_recycler-->
 
 </ScrollView>

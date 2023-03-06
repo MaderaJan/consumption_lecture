@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="128dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="128dp"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardCornerRadius="10dp"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
-    <!--    TODO Hint: uvnitř card view vytvořte layout  -->
-    <!--    TODO @+id/date_text_view -->
-    <!--    TODO @+id/temperature_text_view -->
-    <!--    TODO @+id/consumption_text_view -->
-    <!--    TODO @+id/price_text_view -->
+        <TextView
+            android:id="@+id/date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="24dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/temperature_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="24dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/consumption_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="24dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/price_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:height="24dp"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

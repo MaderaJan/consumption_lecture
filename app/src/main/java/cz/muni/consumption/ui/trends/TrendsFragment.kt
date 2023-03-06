@@ -6,11 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import cz.muni.consumption.databinding.FragmentTrendsBinding
-import java.util.*
+import cz.muni.consumption.ui.repository.TrendRepository
 
+// TODO 2. (S) - Vytvoření Trend obrazovky s 2 horizontal recyclery viz prezentace
+
+// TODO Hint: Step by Step
+// TODO 1. Vytvořit layout s recycler views viz prezentace -> fragment_trends.xml
+// TODO 2. Vytvořit layout -> item_trend.xml
+// TODO 3. Vytvořit ListAdapter, ViewHolder, DiffUtil v -> TrendsAdapter.kt
+// TODO 4. Propojit adapter, recycler a data z TrendRepository.kt
 class TrendsFragment : Fragment() {
 
     private lateinit var binding: FragmentTrendsBinding
+
+    private val trendRepository: TrendRepository by lazy {
+        TrendRepository()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentTrendsBinding.inflate(layoutInflater, container, false)
@@ -20,9 +31,8 @@ class TrendsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        binding.tlacitko.setOnClickListener {
-            val c = Calendar.getInstance()
-            binding.currentDateTextView.text = "${System.currentTimeMillis()}, " + binding.currentDateTextView.text
-        }
+        // TODO Hint: check TrendRepository
+        // TODO Hint: Horizontal recycler -> LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        // TODO Hint: adapter.submitList(data) s použitím TrendRepository
     }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="128dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="10dp"
+    android:layout_height="wrap_content">
+
+
+    <!--    TODO Hint: uvnitř card view vytvořte layout  -->
+    <!--    TODO @+id/date_text_view -->
+    <!--    TODO @+id/temperature_text_view -->
+    <!--    TODO @+id/consumption_text_view -->
+    <!--    TODO @+id/price_text_view -->
+
+</androidx.cardview.widget.CardView>

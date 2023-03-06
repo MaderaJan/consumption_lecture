@@ -15,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Electricity" />
-    <!--    TODO 1. tools:text="Electricity"-->
 
     <TextView
         android:id="@+id/date_text_view"

@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="128dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="128dp"
+    android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardCornerRadius="10dp"
-    android:layout_height="wrap_content">
+    app:cardCornerRadius="10dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
 
-    <!--    TODO Hint: uvnitř card view vytvořte layout  -->
-    <!--    TODO @+id/date_text_view -->
-    <!--    TODO @+id/temperature_text_view -->
-    <!--    TODO @+id/consumption_text_view -->
-    <!--    TODO @+id/price_text_view -->
+        <TextView
+            android:id="@+id/date_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            tools:text="January" />
+
+        <TextView
+            android:id="@+id/temperature_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="14 C" />
+
+        <TextView
+            android:id="@+id/consumption_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="65.0" />
+
+        <TextView
+            android:id="@+id/price_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:text="124 kč" />
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

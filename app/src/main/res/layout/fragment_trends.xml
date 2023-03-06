@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    TODO Hint: LinearLayout (orientation: vertical) uvnitř ScrollView-->
-    <!--    TODO recylclerView id -> electricity_recycler-->
-    <!--    TODO recylclerView id -> gas_recycler-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/consumption_add_edit_chip_electricity"
+            android:textColor="@color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/electricity_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clipToPadding="false"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:orientation="horizontal"
+            tools:listitem="@layout/item_trend" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/consumption_add_edit_chip_gas"
+            android:textColor="@color/black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gas_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:orientation="horizontal"
+            android:clipToPadding="false"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            tools:listitem="@layout/item_trend" />
+
+    </LinearLayout>
 
 </ScrollView>

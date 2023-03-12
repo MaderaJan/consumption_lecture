@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import cz.muni.consumption.data.TrendData
 import cz.muni.consumption.databinding.ItemTrendBinding
-import cz.muni.consumption.ui.data.TrendData
-import cz.muni.consumption.ui.util.DateUtil
-import cz.muni.consumption.ui.util.oneDecimal
+import cz.muni.consumption.util.DateUtil
+import cz.muni.consumption.util.oneDecimal
 
 class TrendAdapter : ListAdapter<TrendData, TrendViewHolder>(TrendDiffUtil()) {
 

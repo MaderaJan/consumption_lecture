@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import cz.muni.consumption.data.ConsumptionType
 import cz.muni.consumption.databinding.FragmentTrendsBinding
-import cz.muni.consumption.ui.data.ConsumptionType
-import cz.muni.consumption.ui.repository.TrendRepository
+import cz.muni.consumption.repository.TrendRepository
 
 class TrendsFragment : Fragment() {
 

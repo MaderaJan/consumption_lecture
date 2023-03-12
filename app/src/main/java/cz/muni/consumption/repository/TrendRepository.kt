@@ -1,7 +1,7 @@
-package cz.muni.consumption.ui.repository
+package cz.muni.consumption.repository
 
-import cz.muni.consumption.ui.data.ConsumptionType
-import cz.muni.consumption.ui.data.TrendData
+import cz.muni.consumption.data.ConsumptionType
+import cz.muni.consumption.data.TrendData
 import java.util.*
 import kotlin.random.Random
 

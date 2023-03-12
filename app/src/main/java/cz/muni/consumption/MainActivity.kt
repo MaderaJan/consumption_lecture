@@ -1,10 +1,9 @@
-package cz.muni.consumption.ui
+package cz.muni.consumption
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import cz.muni.consumption.R
 import cz.muni.consumption.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

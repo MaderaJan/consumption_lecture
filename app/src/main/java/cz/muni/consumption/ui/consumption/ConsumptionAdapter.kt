@@ -6,9 +6,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import cz.muni.consumption.data.MeasuredConsumption
 import cz.muni.consumption.databinding.ItemMeasuredConsumptionBinding
-import cz.muni.consumption.ui.data.MeasuredConsumption
-import cz.muni.consumption.ui.util.DateUtil
+import cz.muni.consumption.util.DateUtil
 
 class ConsumptionAdapter(
     private val onItemClick: (MeasuredConsumption) -> Unit,

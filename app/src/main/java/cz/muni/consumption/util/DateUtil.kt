@@ -1,4 +1,4 @@
-package cz.muni.consumption.ui.util
+package cz.muni.consumption.util
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat

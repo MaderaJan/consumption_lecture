@@ -2,15 +2,58 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="128dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="4dp"
     app:cardCornerRadius="10dp"
     android:layout_height="wrap_content">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/card_layout"
+        android:orientation="horizontal">
+    
+    <TextView
+        android:id="@+id/date_text_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        tools:text="Feb 2022"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/card_layout"/>
 
-    <!--    TODO Hint: uvnitř card view vytvořte layout  -->
-    <!--    TODO @+id/date_text_view -->
-    <!--    TODO @+id/temperature_text_view -->
-    <!--    TODO @+id/consumption_text_view -->
-    <!--    TODO @+id/price_text_view -->
+    <TextView
+        android:id="@+id/temperature_text_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_text_view"
+        tools:text="3 C" />
+
+    <TextView
+        android:id="@+id/consumption_text_view"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/temperature_text_view"
+        tools:text="3 W" />
+
+    <TextView
+        android:id="@+id/price_text_view"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/consumption_text_view"
+        tools:text="3 W" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.cardview.widget.CardView>

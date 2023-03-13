@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import cz.muni.consumption.databinding.FragmentTrendsBinding
 import cz.muni.consumption.ui.repository.TrendRepository
+import cz.muni.consumption.ui.data.ConsumptionType
 
 // TODO 2. (S) - Vytvoření Trend obrazovky s 2 horizontal recyclery viz prezentace
 
@@ -30,6 +32,9 @@ class TrendsFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
+        var trendData = trendRepository.getMockedTrends(ConsumptionType.ELECTRICITY)
+        LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         // TODO Hint: check TrendRepository
         // TODO Hint: Horizontal recycler -> LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

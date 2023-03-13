@@ -24,7 +24,6 @@
         app:backgroundTint="@color/purple_500"
         app:itemTextColor="@drawable/color_bottom_navigation_item"
         android:background="@color/primary_variant_500"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,4 +1,4 @@
-package cz.muni.consumption.ui.data
+package cz.muni.consumption.data
 
 import java.util.*
 

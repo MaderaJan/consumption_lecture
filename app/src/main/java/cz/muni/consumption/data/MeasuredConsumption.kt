@@ -1,7 +1,7 @@
-package cz.muni.consumption.ui.data
+package cz.muni.consumption.data
 
 import android.os.Parcelable
-import cz.muni.consumption.ui.util.oneDecimal
+import cz.muni.consumption.util.oneDecimal
 import kotlinx.parcelize.Parcelize
 import java.util.*
 

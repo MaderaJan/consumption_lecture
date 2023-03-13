@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import cz.muni.consumption.databinding.FragmentConsumptionBinding
-import cz.muni.consumption.ui.repository.ConsumptionRepository
+import cz.muni.consumption.repository.ConsumptionRepository
 
 class ConsumptionFragment : Fragment() {
 
@@ -20,7 +20,7 @@ class ConsumptionFragment : Fragment() {
     }
 
     private val consumptionRepository: ConsumptionRepository by lazy {
-        ConsumptionRepository()
+        ConsumptionRepository(requireContext())
     }
 
     private val adapter: ConsumptionAdapter by lazy {
@@ -37,6 +37,10 @@ class ConsumptionFragment : Fragment() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(context)
         binding.recyclerView.adapter = adapter
+
+        binding.addConsumptionButton.setOnClickListener {
+            // TODO 1.3 Navigace do AddEditObrazovky
+        }
     }
 
     private fun refreshList() {

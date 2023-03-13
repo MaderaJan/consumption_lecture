@@ -1,4 +1,4 @@
-package cz.muni.consumption.ui.util
+package cz.muni.consumption.util
 
 fun Double.oneDecimal(): String =
     String.format("%.1f", this)

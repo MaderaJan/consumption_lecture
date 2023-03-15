@@ -4,8 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    TODO @+id/consumption_text_input_layout -->
-    <!--    HINT: android:inputType="numberDecimal" -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/consumption_text_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="@string/consumption_add_edit_edittext_hint_consumption"
+        app:expandedHintEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/consumption_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/date_text_input_layout"
@@ -29,8 +47,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--    TODO @+id/type_of_consumption_text_view -->
-    <!--    HINT: @string/consumption_add_edit_type_of_consumption -->
+    <TextView
+        android:id="@+id/type_of_consumption_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/consumption_add_edit_type_of_consumption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_text_input_layout" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/consumption_type_chip_group"
@@ -52,11 +78,23 @@
             android:checked="true"
             android:text="@string/consumption_add_edit_chip_electricity" />
 
-        <!--    TODO @+id/gas_chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/gas_chip"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consumption_add_edit_chip_gas" />
 
     </com.google.android.material.chip.ChipGroup>
 
-    <!--    TODO @+id/save_button -->
-    <!--    HINT: @string/consumption_add_edit_button_save -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/consumption_add_edit_button_save"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

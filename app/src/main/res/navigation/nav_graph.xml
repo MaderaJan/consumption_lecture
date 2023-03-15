@@ -11,6 +11,9 @@
         android:label="ConsumptionFragment"
         tools:layout="@layout/fragment_consumption">
 
+        <action
+            android:id="@+id/action_consumptionFragment_to_consumptionAddEditFragment"
+            app:destination="@id/consumptionAddEditFragment" />
     </fragment>
 
     <fragment
@@ -19,6 +22,15 @@
         android:label="TrendsFragment"
         tools:layout="@layout/fragment_trends" />
 
-    <!-- TODO 1.1 Přidat ConsumptionAddEditFragment + Akce s consumption -->
+    <fragment
+        android:id="@+id/consumptionAddEditFragment"
+        tools:layout="@layout/fragment_consuption_add_edit"
+        android:name="cz.muni.consumption.ui.consumption.addedit.ConsumptionAddEditFragment"
+        android:label="ConsumptionAddEditFragment">
+        <argument
+            android:name="measuredConsumption"
+            app:argType="cz.muni.consumption.data.MeasuredConsumption"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

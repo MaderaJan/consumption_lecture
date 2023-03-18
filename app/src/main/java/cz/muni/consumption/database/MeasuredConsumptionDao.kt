@@ -11,6 +11,9 @@ interface MeasuredConsumptionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun persist(entity: MeasuredConsumptionEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun persist(entity: List<MeasuredConsumptionEntity>)
+
     @Query("SELECT * FROM MeasuredConsumptionEntity ORDER BY measurementDate ASC")
     fun selectAllOrderByDate(): List<MeasuredConsumptionEntity>
 }

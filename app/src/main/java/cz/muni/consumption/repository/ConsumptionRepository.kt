@@ -25,7 +25,13 @@ class ConsumptionRepository(
         dao.persist(measuredConsumption.toEntity())
     }
 
+    // TODO 1.3 Dao -> Select -> Mapper -> Return
     fun getAllMeasuredConsumption(): List<MeasuredConsumption> =
         dao.selectAllOrderByDate()
             .map { it.toAppData() }
+
+    fun saveAll(data: List<MeasuredConsumption>) {
+        val entities = data.map { it.toEntity() }
+        dao.persist(entities)
+    }
 }

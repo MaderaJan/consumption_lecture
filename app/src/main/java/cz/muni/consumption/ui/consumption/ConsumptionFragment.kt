@@ -26,8 +26,9 @@ class ConsumptionFragment : Fragment() {
     private val adapter: ConsumptionAdapter by lazy {
         ConsumptionAdapter(
             onItemClick = { consumption ->
+                // TODO 1.5 Edit + SafeArgs
                 findNavController()
-                    .navigate(ConsumptionFragmentDirections.actionConsumptionFragmentToConsumptionAddEditFragment(consumption))
+                    .navigate(ConsumptionFragmentDirections.actionConsumptionFragmentToConsumptionAddEditFragment(measuredConsumption = consumption))
             },
         )
     }
@@ -39,16 +40,12 @@ class ConsumptionFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         binding.addConsumptionButton.setOnClickListener {
-            findNavController()
-                .navigate(
-                    ConsumptionFragmentDirections.actionConsumptionFragmentToConsumptionAddEditFragment(
-                        measuredConsumption = null
-                    )
-                )
+            // TODO (S) Navigate to ConsumptionAddOptionsBottomSheet
         }
     }
 
     private fun refreshList() {
+        // TODO 1.4 submitList pro notify Adapter
         adapter.submitList(consumptionRepository.getAllMeasuredConsumption())
     }
 

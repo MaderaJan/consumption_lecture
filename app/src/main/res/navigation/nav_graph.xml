@@ -10,7 +10,6 @@
         android:name="cz.muni.consumption.ui.consumption.ConsumptionFragment"
         android:label="ConsumptionFragment"
         tools:layout="@layout/fragment_consumption">
-
         <action
             android:id="@+id/action_consumptionFragment_to_consumptionAddEditFragment"
             app:destination="@id/consumptionAddEditFragment" />
@@ -24,13 +23,27 @@
 
     <fragment
         android:id="@+id/consumptionAddEditFragment"
-        tools:layout="@layout/fragment_consuption_add_edit"
         android:name="cz.muni.consumption.ui.consumption.addedit.ConsumptionAddEditFragment"
-        android:label="ConsumptionAddEditFragment">
+        android:label="ConsumptionAddEditFragment"
+        tools:layout="@layout/fragment_consuption_add_edit">
+
+        <argument
+            android:name="measurementBitmap"
+            android:defaultValue="@null"
+            app:argType="android.graphics.Bitmap"
+            app:nullable="true" />
+
+
         <argument
             android:name="measuredConsumption"
+            android:defaultValue="@null"
             app:argType="cz.muni.consumption.data.MeasuredConsumption"
             app:nullable="true" />
+
     </fragment>
+
+    <!--    TODO (S) Přidat ConsumptionAddOptionsBottomSheet -->
+    <!--    TODO (S) Přidat Action z ConsumptionFragment do ConsumptionAddOptionsBottomSheet -->
+    <!--    TODO (S) Přidat Action z ConsumptionAddOptionsBottomSheet do ConsumptionAddEditFragment -->
 
 </navigation>

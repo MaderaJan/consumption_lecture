@@ -1,42 +1,43 @@
 package cz.muni.consumption.repository
 
-import cz.muni.consumption.data.ConsumptionType
+import android.content.Context
 import cz.muni.consumption.data.TrendData
-import java.util.*
-import kotlin.random.Random
+import cz.muni.consumption.database.ConsumptionDatabase
+import cz.muni.consumption.database.MeasuredConsumptionDao
 
-class TrendRepository {
+// TODO 5.1 Trend Repository
+class TrendRepository(
+    context: Context,
+    private val dao: MeasuredConsumptionDao = ConsumptionDatabase.create(context).measuredConsumptionDao(),
+    private val weatherRepository: WeatherRepository = WeatherRepository()
+) {
+
+    companion object {
+        private const val GAS_PRICE_CZK = 3
+        private const val ELECTRICITY_PRICE_CZK = 6
+    }
 
     /**
-     * Generate mocked Trends for given type in 1 year interval
-     * @param type Type of mocked data to be generated
-     * @return mocked trends from january to december sorted by date
+     * Method uses success callback for returning TrendData for electricity and gas
+     * Where trend data are returned only for current year
+     * Where TrendData.temperature source is WeatherRepository data
+     * Where TrendData.consumption is average consumption for month
+     * Where TrendData.price is measuredConsumption * GAS_PRICE_CZK OR ELECTRICITY_PRICE_CZK (depend on type)
+     * @see TrendData
+     * @param success serves as callback when data are successful returned
+     * @param fail serves as fail callback when something wrong happened
      */
-    fun getMockedTrends(type: ConsumptionType): List<TrendData> {
-        val resultData = mutableListOf<TrendData>()
+    fun getThisYearTrends(success: (electricity: List<TrendData>, gas: List<TrendData>) -> Unit, fail: () -> Unit) {
+        // TODO (S) Napsat metodu dle dokumentace ⬆ viz. výše
+        // Hint: Vytažení Constumption z DB seskupené dle typu
+        // Hint: Pro testování použíte generátor(ConstumptionFragment -> Add -> Generate data), který vygeneruje data pro celý rok
 
-        repeat(12) { month ->
-            val calendar = Calendar.getInstance().apply {
-                set(Calendar.MONTH, month)
-            }
-
-            val consumption = Random.nextDouble(30.0, 100.0)
-            val price = when (type) {
-                ConsumptionType.ELECTRICITY -> 6.5 * consumption
-                ConsumptionType.GAS -> 3.5 * consumption
-            }
-
-            val trend = TrendData(
-                consumption = consumption,
-                date = calendar.time,
-                type = type,
-                price = price,
-                temperature = Random.nextDouble(1.0, 30.0),
-            )
-
-            resultData.add(trend)
-        }
-
-        return resultData
+        weatherRepository.getWeather(
+            success = { weatherData ->
+                // Hint: weatherData je mapa Map<Měsíc, Průměrná teplota>
+                // TODO (S) success(electricity, gas)
+            },
+            fail = fail
+        )
     }
 }

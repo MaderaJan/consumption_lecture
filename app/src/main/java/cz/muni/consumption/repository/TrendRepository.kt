@@ -1,42 +1,108 @@
 package cz.muni.consumption.repository
 
+import android.content.Context
 import cz.muni.consumption.data.ConsumptionType
+import cz.muni.consumption.data.MeasuredConsumption
 import cz.muni.consumption.data.TrendData
+import cz.muni.consumption.database.ConsumptionDatabase
+import cz.muni.consumption.database.MeasuredConsumptionDao
+import cz.muni.consumption.repository.mapper.toAppData
 import java.util.*
-import kotlin.random.Random
 
-class TrendRepository {
+class TrendRepository(
+    context: Context,
+    private val dao: MeasuredConsumptionDao = ConsumptionDatabase.create(context).measuredConsumptionDao(),
+    private val weatherRepository: WeatherRepository = WeatherRepository()
+) {
 
-    /**
-     * Generate mocked Trends for given type in 1 year interval
-     * @param type Type of mocked data to be generated
-     * @return mocked trends from january to december sorted by date
-     */
-    fun getMockedTrends(type: ConsumptionType): List<TrendData> {
-        val resultData = mutableListOf<TrendData>()
+    companion object {
+        private const val GAS_PRICE_CZK = 3
+        private const val ELECTRICITY_PRICE_CZK = 6
+    }
 
-        repeat(12) { month ->
-            val calendar = Calendar.getInstance().apply {
-                set(Calendar.MONTH, month)
+    fun getThisYearTrends(success: (List<TrendData>, List<TrendData>) -> Unit, fail: () -> Unit) {
+        val consumptionGroupedByTypes = dao
+            .selectAllOrderByDate()
+            .map { it.toAppData() }
+            .filter {
+                Calendar.getInstance().apply {
+                    time = it.measurementDate
+                }.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
             }
+            .groupBy { it.type }
 
-            val consumption = Random.nextDouble(30.0, 100.0)
-            val price = when (type) {
-                ConsumptionType.ELECTRICITY -> 6.5 * consumption
-                ConsumptionType.GAS -> 3.5 * consumption
+        weatherRepository.getWeather(
+            success = { weatherData ->
+                val electricity = (consumptionGroupedByTypes[ConsumptionType.ELECTRICITY] ?: emptyList())
+                    .groupByMonths()
+                    .createTrendData(ConsumptionType.ELECTRICITY, weatherData)
+
+                val gas = (consumptionGroupedByTypes[ConsumptionType.GAS] ?: emptyList())
+                    .groupByMonths()
+                    .createTrendData(ConsumptionType.GAS, weatherData)
+
+                success(electricity, gas)
+            },
+            fail = fail
+        )
+    }
+
+    private fun List<MeasuredConsumption>.groupByMonths(): Map<Int, List<MeasuredConsumption>> =
+        this.groupBy {
+            val date = Calendar.getInstance().apply {
+                time = it.measurementDate
             }
-
-            val trend = TrendData(
-                consumption = consumption,
-                date = calendar.time,
-                type = type,
-                price = price,
-                temperature = Random.nextDouble(1.0, 30.0),
-            )
-
-            resultData.add(trend)
+            date.get(Calendar.MONTH)
         }
 
-        return resultData
+    private fun Map<Int, List<MeasuredConsumption>>.createTrendData(
+        type: ConsumptionType,
+        weatherData: Map<Int, Double>
+    ): MutableList<TrendData> {
+        val trendData = mutableListOf<TrendData>()
+
+        for (month in 0..11) {
+            val monthConsumptions = this.getOrDefault(month, emptyList())
+            val monthConsumption = if (monthConsumptions.isEmpty()) {
+                0.0
+            } else {
+                calculateMonthConsumption(monthConsumptions, month)
+            }
+
+            val date = Calendar.getInstance().apply {
+                set(Calendar.MONTH, month)
+            }.time
+
+            val price = when (type) {
+                ConsumptionType.ELECTRICITY -> monthConsumption * ELECTRICITY_PRICE_CZK
+                ConsumptionType.GAS -> monthConsumption * GAS_PRICE_CZK
+            }
+
+            trendData.add(
+                TrendData(
+                    consumption = monthConsumption,
+                    date = date,
+                    type = type,
+                    price = price,
+                    temperature = weatherData.getOrDefault(month, null)
+                )
+            )
+        }
+
+        return trendData
+    }
+
+    private fun Map<Int, List<MeasuredConsumption>>.calculateMonthConsumption(
+        monthConsumptions: List<MeasuredConsumption>,
+        month: Int
+    ): Double {
+        val previousMonthConsumption = if (month == 0) {
+            this[month]?.first()?.consumption ?: 0.0
+        } else {
+            this[month - 1]?.last()?.consumption ?: 0.0
+        }
+
+        val monthConsumption = monthConsumptions.last().consumption
+        return monthConsumption - previousMonthConsumption
     }
 }

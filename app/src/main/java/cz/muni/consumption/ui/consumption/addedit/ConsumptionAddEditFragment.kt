@@ -1,5 +1,6 @@
 package cz.muni.consumption.ui.consumption.addedit
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import cz.muni.consumption.R
 import cz.muni.consumption.data.ConsumptionType
 import cz.muni.consumption.databinding.FragmentConsuptionAddEditBinding
+import cz.muni.consumption.repository.ConsumptionProcessor
 import cz.muni.consumption.repository.ConsumptionRepository
 import cz.muni.consumption.util.DateUtil
 import java.util.*
@@ -71,11 +74,13 @@ class ConsumptionAddEditFragment : Fragment() {
         }
     }
 
+    // TODO 1.2 Init Values
     private fun setInitialValues() {
         val measuredConsumption = args.measuredConsumption
 
         if (measuredConsumption == null) {
             setInitDate(null)
+            setInitConsumptionCandidateValues(args.measurementBitmap)
         } else {
             setInitDate(measuredConsumption.measurementDate)
             binding.consumptionEditText.setText(measuredConsumption.consumption.toString())
@@ -86,11 +91,29 @@ class ConsumptionAddEditFragment : Fragment() {
         }
     }
 
+    private fun setInitConsumptionCandidateValues(measurementBitmap: Bitmap?) {
+        if (measurementBitmap == null) return
+
+        val processor = ConsumptionProcessor()
+        processor.onProcessFinished(measurementBitmap) { candidatesValues ->
+            candidatesValues.forEach { candidate ->
+                val chip = Chip(context)
+                chip.text = candidate.toString()
+                binding.consumptionCandidatesChipGroup.addView(chip)
+
+                chip.setOnClickListener {
+                    binding.consumptionEditText.setText(candidate.toString())
+                }
+            }
+        }
+    }
+
     private fun setInitDate(date: Date?) {
         val dateText = DateUtil.dateFormat.format(date ?: Date(System.currentTimeMillis()))
         binding.dateEditText.setText(dateText)
     }
 
+    // TODO 1.1 Validace
     private fun isConsumptionFormValid(consumption: String, date: String): Boolean {
         if (consumption.isEmpty() || consumption.toDoubleOrNull() === null) {
             binding.consumptionEditText.error = getString(R.string.consumption_add_edit_field_is_not_valid)

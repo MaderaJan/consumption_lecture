@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import cz.muni.consumption.data.ConsumptionType
 import cz.muni.consumption.databinding.FragmentTrendsBinding
 import cz.muni.consumption.repository.TrendRepository
 
@@ -15,16 +15,12 @@ class TrendsFragment : Fragment() {
     private lateinit var binding: FragmentTrendsBinding
 
     private val trendRepository: TrendRepository by lazy {
-        TrendRepository()
+        TrendRepository(requireContext())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentTrendsBinding.inflate(layoutInflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onStart() {
@@ -40,8 +36,15 @@ class TrendsFragment : Fragment() {
         val gasAdapter = TrendAdapter()
         binding.gasRecycler.adapter = gasAdapter
 
-        electricityAdapter.submitList(trendRepository.getMockedTrends(ConsumptionType.ELECTRICITY))
-        gasAdapter.submitList(trendRepository.getMockedTrends(ConsumptionType.GAS))
+        trendRepository.getThisYearTrends(
+            success = { electricity, gas ->
+                electricityAdapter.submitList(electricity)
+                gasAdapter.submitList(gas)
+            },
+            fail = {
+                Toast.makeText(context, "Server error", Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 
 }

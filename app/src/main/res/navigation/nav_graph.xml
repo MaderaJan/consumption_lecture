@@ -10,7 +10,9 @@
         android:name="cz.muni.consumption.ui.consumption.ConsumptionFragment"
         android:label="ConsumptionFragment"
         tools:layout="@layout/fragment_consumption">
-
+        <action
+            android:id="@+id/action_consumptionFragment_to_consumptionAddOptionsBottomSheet"
+            app:destination="@id/consumptionAddOptionsBottomSheet" />
         <action
             android:id="@+id/action_consumptionFragment_to_consumptionAddEditFragment"
             app:destination="@id/consumptionAddEditFragment" />
@@ -24,13 +26,35 @@
 
     <fragment
         android:id="@+id/consumptionAddEditFragment"
-        tools:layout="@layout/fragment_consuption_add_edit"
         android:name="cz.muni.consumption.ui.consumption.addedit.ConsumptionAddEditFragment"
-        android:label="ConsumptionAddEditFragment">
+        android:label="ConsumptionAddEditFragment"
+        tools:layout="@layout/fragment_consuption_add_edit">
+
+        <argument
+            android:name="measurementBitmap"
+            android:defaultValue="@null"
+            app:argType="android.graphics.Bitmap"
+            app:nullable="true" />
+
+
         <argument
             android:name="measuredConsumption"
+            android:defaultValue="@null"
             app:argType="cz.muni.consumption.data.MeasuredConsumption"
             app:nullable="true" />
+
     </fragment>
+
+    <dialog
+        android:id="@+id/consumptionAddOptionsBottomSheet"
+        android:name="cz.muni.consumption.ui.consumption.ConsumptionAddOptionsBottomSheet"
+        android:label="ConsumptionAddOptionsBottomSheet"
+        tools:layout="@layout/bottom_sheet_consumtion_add_options">
+
+        <action
+            android:id="@+id/action_consumptionAddOptionsBottomSheet_to_consumptionAddEditFragment"
+            app:destination="@id/consumptionAddEditFragment" />
+
+    </dialog>
 
 </navigation>

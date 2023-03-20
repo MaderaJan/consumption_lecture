@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.bottomNavigation.setupWithNavController(navController)
 
-        // TODO 1.6 Navigation Dest. listener pro show/hide bottom navigation
+        // TODO 2 Navigation Dest. listener pro show/hide bottom navigation
         navController.addOnDestinationChangedListener { _, destination, _ ->
             binding.bottomNavigation.isVisible = destination.id != R.id.consumptionAddEditFragment
         }

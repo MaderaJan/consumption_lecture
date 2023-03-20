@@ -11,6 +11,9 @@
         android:label="ConsumptionFragment"
         tools:layout="@layout/fragment_consumption">
         <action
+            android:id="@+id/action_consumptionFragment_to_consumptionAddOptionsBottomSheet"
+            app:destination="@id/consumptionAddOptionsBottomSheet" />
+        <action
             android:id="@+id/action_consumptionFragment_to_consumptionAddEditFragment"
             app:destination="@id/consumptionAddEditFragment" />
     </fragment>
@@ -42,8 +45,16 @@
 
     </fragment>
 
-    <!--    TODO (S) Přidat ConsumptionAddOptionsBottomSheet -->
-    <!--    TODO (S) Přidat Action z ConsumptionFragment do ConsumptionAddOptionsBottomSheet -->
-    <!--    TODO (S) Přidat Action z ConsumptionAddOptionsBottomSheet do ConsumptionAddEditFragment -->
+    <dialog
+        android:id="@+id/consumptionAddOptionsBottomSheet"
+        android:name="cz.muni.consumption.ui.consumption.ConsumptionAddOptionsBottomSheet"
+        android:label="ConsumptionAddOptionsBottomSheet"
+        tools:layout="@layout/bottom_sheet_consumtion_add_options">
+
+        <action
+            android:id="@+id/action_consumptionAddOptionsBottomSheet_to_consumptionAddEditFragment"
+            app:destination="@id/consumptionAddEditFragment" />
+
+    </dialog>
 
 </navigation>

@@ -91,7 +91,6 @@ class ConsumptionAddEditFragment : Fragment() {
         }
     }
 
-    // TODO 3. Představení setInitConsumptionCandidateValues
     private fun setInitConsumptionCandidateValues(measurementBitmap: Bitmap?) {
         if (measurementBitmap == null) return
 

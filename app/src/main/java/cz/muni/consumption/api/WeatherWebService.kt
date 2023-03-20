@@ -5,7 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-// TODO 4.1 Web Service API
 interface WeatherWebService {
 
     @GET("era5")

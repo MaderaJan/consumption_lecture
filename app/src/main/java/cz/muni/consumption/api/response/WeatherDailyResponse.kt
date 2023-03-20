@@ -1,6 +1,5 @@
 package cz.muni.consumption.api.response
 
-// TODO 4.2 Api Response
 data class WeatherDailyResponse(
     val daily: Daily
 ) {

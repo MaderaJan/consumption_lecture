@@ -40,7 +40,10 @@ class ConsumptionFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         binding.addConsumptionButton.setOnClickListener {
-            // TODO (S) Navigate to ConsumptionAddOptionsBottomSheet
+            findNavController()
+                .navigate(
+                    ConsumptionFragmentDirections.actionConsumptionFragmentToConsumptionAddOptionsBottomSheet()
+                )
         }
     }
 

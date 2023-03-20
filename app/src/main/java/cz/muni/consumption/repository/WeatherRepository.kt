@@ -10,9 +10,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
-// TODO 4.4 WeatherRepository
 class WeatherRepository(
-    // TODO 4.5 Vytvoření webservice
     private val weatherWebService: WeatherWebService = RetrofitUtil.createWeatherWebService()
 ) {
 
@@ -22,13 +20,10 @@ class WeatherRepository(
             set(Calendar.DAY_OF_YEAR, 1)
         }.time
 
-        // TODO 4.6 Api Call
         weatherWebService.getDailyWeather(
             startDate = DateUtil.apiFormat.format(startOfTheYear),
             endDate = DateUtil.apiFormat.format(today)
         ).enqueue(object : Callback<WeatherDailyResponse> {
-
-            // TODO 4.7 onResponse
             override fun onResponse(call: Call<WeatherDailyResponse>, response: Response<WeatherDailyResponse>) {
                 val responseBody = response.body()
                 if (response.isSuccessful && responseBody != null) {
@@ -40,7 +35,6 @@ class WeatherRepository(
                 }
             }
 
-            // TODO 4.8 onFailure
             override fun onFailure(call: Call<WeatherDailyResponse>, t: Throwable) {
                 Log.e(this::class.simpleName, t.message, t)
                 fail()
@@ -48,7 +42,6 @@ class WeatherRepository(
         })
     }
 
-    // TODO 4.9 Mapper -> Mapování na průměrnou teplotu každý měsíc
     private fun mapResponse(response: WeatherDailyResponse): Map<Int, Double> =
         response
             .daily

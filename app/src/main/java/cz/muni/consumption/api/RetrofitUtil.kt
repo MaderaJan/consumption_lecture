@@ -5,7 +5,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-// TODO 4.3 Vytvoření Api clienta
 object RetrofitUtil {
 
     private const val BASE_URL = "https://archive-api.open-meteo.com/v1/"

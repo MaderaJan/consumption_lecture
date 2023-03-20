@@ -17,7 +17,6 @@ import cz.muni.consumption.databinding.BottomSheetConsumtionAddOptionsBinding
 import cz.muni.consumption.repository.ConsumptionDataGenerator
 import cz.muni.consumption.repository.ConsumptionRepository
 
-// TODO 2.1 Představení ConsumptionAddOptionsBottomSheet -> Photo, Gallery, Generate
 class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var binding: BottomSheetConsumtionAddOptionsBinding
@@ -25,13 +24,11 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
         ConsumptionRepository(requireContext())
     }
 
-    // TODO 2.2 take photo launcher
     private val takePhotoLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             processPhotoResult(it)
         }
 
-    // TODO 2.3 gallery launcher
     private val fromGalleryLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             processFromGalleryResult(it)
@@ -45,13 +42,11 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO 2.4 Zahájení focení
         binding.takePhotoTextView.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             takePhotoLauncher.launch(intent)
         }
 
-        // TODO 2.5 Zahájení galerie
         binding.fromGalleryTextView.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -62,7 +57,6 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
             navigateToAddEditFragment(image = null)
         }
 
-        // TODO 2.6 Generátor dat
         binding.generateTextView.setOnClickListener {
             val data = ConsumptionDataGenerator().generateData()
             consumptionRepository.saveAll(data)
@@ -70,7 +64,6 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    // TODO 2.2 processPhotoResult
     private fun processPhotoResult(activityResult: ActivityResult) {
         if (activityResult.resultCode == AppCompatActivity.RESULT_OK) {
             val image = activityResult.data?.extras?.get("data") as? Bitmap
@@ -78,7 +71,6 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
-    // TODO 2.3 processFromGalleryResult
     private fun processFromGalleryResult(activityResult: ActivityResult) {
         if (activityResult.resultCode == AppCompatActivity.RESULT_OK) {
             val uri = activityResult.data?.data
@@ -88,6 +80,11 @@ class ConsumptionAddOptionsBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun navigateToAddEditFragment(image: Bitmap?) {
-        //  TODO (S) Navigate to ConsumptionAddEdit
+        findNavController()
+            .navigate(
+                ConsumptionAddOptionsBottomSheetDirections.actionConsumptionAddOptionsBottomSheetToConsumptionAddEditFragment(
+                    measurementBitmap = image
+                )
+            )
     }
 }
